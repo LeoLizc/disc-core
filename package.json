@@ -1,7 +1,7 @@
 {
-  "name": "disc-core",
+  "name": "@disc-core/commands",
   "version": "0.0.1",
-  "description": "Discord.js wrapper",
+  "description": "Discord.js wrapper providing syntactic sugar for slash commands",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -12,7 +12,9 @@
   ],
   "author": "LeoLizc",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "discord.js": "^14.16.3"
+  },
   "devDependencies": {
     "es-ts": "https://gitpkg.vercel.app/LeoLizc/my-eslint-configs/simple-ts?main",
     "eslint": "^9.13.0",
