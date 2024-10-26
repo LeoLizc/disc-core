@@ -1,7 +1,7 @@
+import { type Module } from '../structures/module';
 import { type ClientOptions } from 'discord.js';
 
 export interface DiscFactoryOptions extends ClientOptions {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  modules?: any[];
+  modules?: Module[];
   token?: string;
 }

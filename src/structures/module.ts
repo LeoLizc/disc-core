@@ -13,6 +13,13 @@ export class Module {
 
   register(client: Client) {
     for (const command of this.commands) {
+      if (client.commands.has(command.name)) {
+        console.warn(
+          `Command ${command.name} already exists in the client, skipping...`,
+        );
+        continue;
+      }
+
       client.commands.set(command.name, command);
     }
   }
