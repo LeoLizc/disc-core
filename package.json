@@ -2,30 +2,47 @@
   "name": "@disc-core/commands",
   "version": "0.0.1",
   "description": "Discord.js wrapper providing syntactic sugar for slash commands",
-  "main": "index.js",
-  "type": "module",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "clean": "rimraf dist",
+    "build:clean": "npm run clean && npm run build",
+    "publish:clean": "clean-publish --clean-comments",
+    "prepublishOnly": "npm run build:clean && rimraf ./package && clean-publish",
+    "postpublish": "rimraf ./package"
   },
   "keywords": [
     "discord"
   ],
   "author": "LeoLizc",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "rimraf": "^6.0.1"
+  },
   "devDependencies": {
+    "clean-publish": "^5.1.0",
     "es-ts": "https://gitpkg.vercel.app/LeoLizc/my-eslint-configs/simple-ts?main",
     "eslint": "^9.13.0",
     "typescript": "^5.6.3"
   },
   "peerDependencies": {
-    "discord.js": "^14.16.3",
-    "discord-api-types": "^0.37.100"
+    "discord-api-types": "^0.37.100",
+    "discord.js": "^14.16.3"
   },
   "pnpm": {
     "overrides": {
       "discord-api-types": "^0.37.100"
     }
+  },
+  "clean-publish": {
+    "withoutPublish": true,
+    "tempDir": "package",
+    "files": [
+      "src"
+    ]
+  },
+  "publishConfig": {
+    "directory": "package"
   }
 }
