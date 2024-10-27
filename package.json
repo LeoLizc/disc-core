@@ -17,15 +17,14 @@
   ],
   "author": "LeoLizc",
   "license": "Apache-2.0",
-  "dependencies": {
-    "rimraf": "^6.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "clean-publish": "^5.1.0",
     "copyfiles": "^2.4.1",
     "es-ts": "https://gitpkg.vercel.app/LeoLizc/my-eslint-configs/simple-ts?main",
     "eslint": "^9.13.0",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "rimraf": "^6.0.1"
   },
   "peerDependencies": {
     "discord-api-types": "^0.37.100",
