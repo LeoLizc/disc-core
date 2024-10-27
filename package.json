@@ -1,5 +1,5 @@
 {
-  "name": "@disc-core/commands",
+  "name": "disc-core-commands",
   "version": "0.0.1",
   "description": "Discord.js wrapper providing syntactic sugar for slash commands",
   "main": "dist/index.js",
