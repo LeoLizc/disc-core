@@ -25,7 +25,7 @@ export class Client extends DiscordClient {
     }
   }
 
-  listenCommands() {
+  private listenCommands() {
     this.on(Events.InteractionCreate, async (interaction) => {
       if (interaction.isCommand()) {
         const command = this.commands.get(interaction.commandName);
@@ -75,21 +75,37 @@ export class Client extends DiscordClient {
     });
   }
 
-  registerModules(modules: Module[]) {
+  private registerModules(modules: Module[]) {
     for (const module of modules) {
       module.register(this);
     }
   }
 
-  uploadAppCommands(client: Client, auth: { clientId: string; token: string }) {
-    if (!client.commands) return;
+  /**
+   * Uploads application commands to the Discord API.
+   * @param auth - The authentication object containing the client ID and token.
+   * @param auth.clientId - The client ID of the application.
+   * @param auth.token - The authentication token for the application.
+   *
+   * This function checks if the client has commands and if the authentication
+   * details are provided. It then creates a REST client with the provided token,
+   * converts the commands to JSON, and uploads them to the Discord API.
+   *
+   * If the token is not provided or the client ID is invalid, the function will
+   * return early without making any API calls.
+   *
+   * The function logs the commands being updated and handles the response or
+   * any errors that occur during the API call.
+   */
+  uploadAppCommands(auth: { clientId: string; token: string }) {
+    if (!this.commands) return;
     const { clientId, token } = auth;
 
     if (!token) return;
     if ((clientId ?? null) === null || clientId === '') return;
 
     const restClient = new REST().setToken(token);
-    const commands = client.commands.map((command) => {
+    const commands = this.commands.map((command) => {
       return command.toJSON();
     });
 
